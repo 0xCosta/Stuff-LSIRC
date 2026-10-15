@@ -1,6 +1,6 @@
 import re
 
-str="Isto E um Teste"
+str="O real teste de sistemas"
 
 pattern = re.compile(r'[A-Z\s]*')
 str2 = pattern.sub('',str)

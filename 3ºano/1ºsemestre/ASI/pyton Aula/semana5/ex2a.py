@@ -4,7 +4,7 @@ masculino = dict()
 feminino = dict()
 
 pattern = re.compile(r';M;')
-with open("dados.txt") as fp:
+with open("pyton Aula/semana5/dados.txt") as fp:
 	for linha in fp:
 		if pattern.search(linha):
 			linha = linha.strip().split(";")
