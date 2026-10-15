@@ -1,0 +1,2070 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Preparação para Exame de ASI (20 Valores) | ESTG - LSIRC</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-body: #0a0d14;
+            --bg-surface: #121722;
+            --bg-card: #182030;
+            --bg-card-hover: #1f2a3f;
+            --bg-code: #0b101b;
+            --border: #232f45;
+            --border-hover: #3b82f6;
+            --text-main: #f1f5f9;
+            --text-muted: #94a3b8;
+            --text-dim: #64748b;
+            --accent-primary: #3b82f6;
+            --accent-secondary: #06b6d4;
+            --accent-tertiary: #10b981;
+            --accent-warning: #f59e0b;
+            --accent-danger: #ef4444;
+            --accent-purple: #8b5cf6;
+            --gradient-brand: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 50%, #06b6d4 100%);
+            --gradient-gold: linear-gradient(135deg, #fbbf24 0%, #f59e0b 50%, #d97706 100%);
+            --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.4);
+            --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.5);
+            --shadow-lg: 0 16px 40px rgba(0, 0, 0, 0.6);
+            --radius-sm: 8px;
+            --radius-md: 12px;
+            --radius-lg: 18px;
+            --transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        [data-theme="light"] {
+            --bg-body: #f8fafc;
+            --bg-surface: #ffffff;
+            --bg-card: #f1f5f9;
+            --bg-card-hover: #e2e8f0;
+            --bg-code: #0f172a;
+            --border: #cbd5e1;
+            --border-hover: #2563eb;
+            --text-main: #0f172a;
+            --text-muted: #475569;
+            --text-dim: #64748b;
+            --accent-primary: #2563eb;
+            --accent-secondary: #0891b2;
+            --accent-tertiary: #059669;
+            --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.06);
+            --shadow-md: 0 8px 20px rgba(0, 0, 0, 0.08);
+            --shadow-lg: 0 16px 36px rgba(0, 0, 0, 0.12);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background-color: var(--bg-body);
+            color: var(--text-main);
+            line-height: 1.6;
+            overflow-x: hidden;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        /* Top Bar */
+        .navbar {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: rgba(18, 23, 34, 0.85);
+            backdrop-filter: blur(16px);
+            border-bottom: 1px solid var(--border);
+            padding: 0.85rem 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            transition: var(--transition);
+        }
+
+        [data-theme="light"] .navbar {
+            background: rgba(255, 255, 255, 0.85);
+        }
+
+        .nav-brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-family: 'Outfit', sans-serif;
+            font-weight: 800;
+            font-size: 1.25rem;
+            text-decoration: none;
+            color: var(--text-main);
+        }
+
+        .brand-badge {
+            background: var(--gradient-brand);
+            color: #ffffff;
+            padding: 4px 10px;
+            border-radius: var(--radius-sm);
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+        }
+
+        .nav-meta {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .score-pill {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(245, 158, 11, 0.15);
+            border: 1px solid rgba(245, 158, 11, 0.4);
+            color: #fbbf24;
+            padding: 6px 14px;
+            border-radius: 999px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            animation: pulse-glow 3s infinite;
+        }
+
+        @keyframes pulse-glow {
+            0%, 100% { box-shadow: 0 0 10px rgba(245, 158, 11, 0.2); }
+            50% { box-shadow: 0 0 20px rgba(245, 158, 11, 0.4); }
+        }
+
+        .btn-theme {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            color: var(--text-main);
+            padding: 8px 14px;
+            border-radius: var(--radius-sm);
+            cursor: pointer;
+            font-size: 0.85rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            transition: var(--transition);
+        }
+
+        .btn-theme:hover {
+            border-color: var(--accent-primary);
+            color: var(--accent-primary);
+        }
+
+        /* Container & Layout */
+        .container {
+            max-width: 1380px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        /* Hero Header */
+        .hero {
+            background: linear-gradient(180deg, rgba(59, 130, 246, 0.1) 0%, rgba(18, 23, 34, 0) 100%);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-lg);
+            padding: 2.5rem;
+            margin-bottom: 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(139, 92, 246, 0.15) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .hero-title {
+            font-family: 'Outfit', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 800;
+            line-height: 1.2;
+            margin-bottom: 0.75rem;
+            background: var(--gradient-brand);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero-desc {
+            font-size: 1.1rem;
+            color: var(--text-muted);
+            max-width: 850px;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .stat-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-md);
+            padding: 1.2rem;
+            transition: var(--transition);
+        }
+
+        .stat-card:hover {
+            border-color: var(--accent-primary);
+            transform: translateY(-2px);
+        }
+
+        .stat-num {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: var(--accent-secondary);
+        }
+
+        .stat-label {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            font-weight: 600;
+        }
+
+        /* Navigation Tabs */
+        .tabs-nav {
+            display: flex;
+            gap: 8px;
+            overflow-x: auto;
+            padding-bottom: 8px;
+            margin-bottom: 2rem;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .tab-btn {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            color: var(--text-muted);
+            padding: 10px 18px;
+            border-radius: var(--radius-md);
+            font-size: 0.9rem;
+            font-weight: 600;
+            cursor: pointer;
+            white-space: nowrap;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: var(--transition);
+        }
+
+        .tab-btn:hover {
+            color: var(--text-main);
+            background: var(--bg-card-hover);
+            border-color: var(--text-dim);
+        }
+
+        .tab-btn.active {
+            background: var(--accent-primary);
+            color: #ffffff;
+            border-color: var(--accent-primary);
+            box-shadow: 0 4px 14px rgba(59, 130, 246, 0.4);
+        }
+
+        .tab-btn .badge {
+            background: rgba(255, 255, 255, 0.2);
+            color: inherit;
+            padding: 2px 7px;
+            border-radius: 999px;
+            font-size: 0.75rem;
+        }
+
+        /* Tab Content */
+        .tab-pane {
+            display: none;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .tab-pane.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(6px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Card Sections */
+        .section-card {
+            background: var(--bg-surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-lg);
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 1.5rem;
+            flex-wrap: wrap;
+            gap: 12px;
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 1rem;
+        }
+
+        .section-title-wrap {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .pillar-icon {
+            width: 42px;
+            height: 42px;
+            border-radius: var(--radius-sm);
+            background: rgba(59, 130, 246, 0.15);
+            color: var(--accent-primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+            font-weight: 700;
+        }
+
+        .section-title {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+
+        .val-badge {
+            background: rgba(16, 185, 129, 0.15);
+            border: 1px solid rgba(16, 185, 129, 0.3);
+            color: var(--accent-tertiary);
+            font-size: 0.8rem;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 999px;
+        }
+
+        /* Code Blocks */
+        .code-container {
+            background: var(--bg-code);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            margin: 1.25rem 0;
+            position: relative;
+        }
+
+        .code-header {
+            background: rgba(255, 255, 255, 0.03);
+            border-bottom: 1px solid var(--border);
+            padding: 8px 16px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            font-size: 0.8rem;
+            font-family: 'Fira Code', monospace;
+            color: var(--text-dim);
+        }
+
+        .code-lang {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--accent-secondary);
+            font-weight: 600;
+        }
+
+        .btn-copy {
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid var(--border);
+            color: var(--text-muted);
+            padding: 4px 10px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.75rem;
+            transition: var(--transition);
+        }
+
+        .btn-copy:hover {
+            color: #ffffff;
+            background: var(--accent-primary);
+            border-color: var(--accent-primary);
+        }
+
+        pre {
+            padding: 1.2rem;
+            overflow-x: auto;
+            font-family: 'Fira Code', 'Courier New', monospace;
+            font-size: 0.88rem;
+            color: #e2e8f0;
+            line-height: 1.55;
+        }
+
+        /* Interactive Regex Tester */
+        .regex-tool {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-md);
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .tool-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.2rem;
+            margin-bottom: 1rem;
+        }
+
+        @media (max-width: 768px) {
+            .tool-grid { grid-template-columns: 1fr; }
+        }
+
+        .input-group {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .input-group label {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--text-muted);
+        }
+
+        .custom-input {
+            background: var(--bg-surface);
+            border: 1px solid var(--border);
+            color: var(--text-main);
+            padding: 10px 14px;
+            border-radius: var(--radius-sm);
+            font-family: 'Fira Code', monospace;
+            font-size: 0.9rem;
+            transition: var(--transition);
+        }
+
+        .custom-input:focus {
+            outline: none;
+            border-color: var(--accent-primary);
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2);
+        }
+
+        .regex-presets {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 1rem;
+        }
+
+        .preset-btn {
+            background: var(--bg-surface);
+            border: 1px solid var(--border);
+            color: var(--text-muted);
+            padding: 6px 12px;
+            border-radius: var(--radius-sm);
+            font-size: 0.78rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .preset-btn:hover {
+            color: var(--accent-secondary);
+            border-color: var(--accent-secondary);
+        }
+
+        .test-result-box {
+            background: var(--bg-surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-sm);
+            padding: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        .status-badge {
+            padding: 4px 12px;
+            border-radius: 999px;
+            font-size: 0.8rem;
+            font-weight: 700;
+        }
+
+        .status-badge.valid {
+            background: rgba(16, 185, 129, 0.2);
+            color: #10b981;
+            border: 1px solid rgba(16, 185, 129, 0.4);
+        }
+
+        .status-badge.invalid {
+            background: rgba(239, 68, 68, 0.2);
+            color: #ef4444;
+            border: 1px solid rgba(239, 68, 68, 0.4);
+        }
+
+        /* Tables */
+        .custom-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.25rem 0;
+            font-size: 0.9rem;
+        }
+
+        .custom-table th, .custom-table td {
+            padding: 12px 16px;
+            text-align: left;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .custom-table th {
+            background: rgba(255, 255, 255, 0.03);
+            color: var(--text-muted);
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 0.78rem;
+            letter-spacing: 0.5px;
+        }
+
+        .custom-table tr:hover td {
+            background: rgba(255, 255, 255, 0.015);
+        }
+
+        .code-inline {
+            font-family: 'Fira Code', monospace;
+            background: rgba(59, 130, 246, 0.12);
+            color: #93c5fd;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-size: 0.85em;
+        }
+
+        /* Visual Trees / Diagrams */
+        .dict-visual {
+            background: var(--bg-code);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-md);
+            padding: 1.5rem;
+            font-family: 'Fira Code', monospace;
+            font-size: 0.85rem;
+            line-height: 1.7;
+            color: #cbd5e1;
+            margin: 1.25rem 0;
+            overflow-x: auto;
+        }
+
+        .tree-key { color: #f472b6; font-weight: 600; }
+        .tree-val { color: #38bdf8; }
+        .tree-comment { color: #64748b; font-style: italic; }
+
+        /* Quiz Simulator */
+        .quiz-container {
+            background: var(--bg-surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-lg);
+            padding: 2rem;
+            margin-top: 1rem;
+        }
+
+        .quiz-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 2rem;
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 1rem;
+        }
+
+        .quiz-score-meter {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .score-display {
+            font-family: 'Outfit', sans-serif;
+            font-size: 2rem;
+            font-weight: 800;
+            color: #fbbf24;
+        }
+
+        .question-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-md);
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            transition: var(--transition);
+        }
+
+        .question-title {
+            font-size: 1.05rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .options-list {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .option-item {
+            background: var(--bg-surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-sm);
+            padding: 10px 14px;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .option-item:hover {
+            border-color: var(--accent-primary);
+            background: var(--bg-card-hover);
+        }
+
+        .option-item.correct {
+            background: rgba(16, 185, 129, 0.15) !important;
+            border-color: #10b981 !important;
+            color: #10b981;
+            font-weight: 600;
+        }
+
+        .option-item.wrong {
+            background: rgba(239, 68, 68, 0.15) !important;
+            border-color: #ef4444 !important;
+            color: #ef4444;
+        }
+
+        .explanation {
+            margin-top: 10px;
+            padding: 10px 14px;
+            background: rgba(59, 130, 246, 0.1);
+            border-left: 3px solid var(--accent-primary);
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+            display: none;
+        }
+
+        /* Tips and Alerts */
+        .alert-box {
+            padding: 1.2rem;
+            border-radius: var(--radius-md);
+            margin: 1.2rem 0;
+            display: flex;
+            gap: 14px;
+            align-items: flex-start;
+        }
+
+        .alert-warning {
+            background: rgba(245, 158, 11, 0.1);
+            border: 1px solid rgba(245, 158, 11, 0.3);
+            color: #fde68a;
+        }
+
+        .alert-success {
+            background: rgba(16, 185, 129, 0.1);
+            border: 1px solid rgba(16, 185, 129, 0.3);
+            color: #a7f3d0;
+        }
+
+        .alert-danger {
+            background: rgba(239, 68, 68, 0.1);
+            border: 1px solid rgba(239, 68, 68, 0.3);
+            color: #fecaca;
+        }
+
+        .alert-icon {
+            font-size: 1.4rem;
+            line-height: 1;
+        }
+
+        /* Exam Simulator Accordions */
+        .exam-accordion {
+            border: 1px solid var(--border);
+            border-radius: var(--radius-md);
+            margin-bottom: 1rem;
+            overflow: hidden;
+            background: var(--bg-card);
+        }
+
+        .accordion-header {
+            padding: 1.2rem 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            cursor: pointer;
+            user-select: none;
+            background: var(--bg-card);
+            transition: var(--transition);
+        }
+
+        .accordion-header:hover {
+            background: var(--bg-card-hover);
+        }
+
+        .accordion-title {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.15rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .accordion-content {
+            display: none;
+            padding: 1.5rem;
+            border-top: 1px solid var(--border);
+            background: var(--bg-surface);
+        }
+
+        .accordion-content.open {
+            display: block;
+        }
+
+        /* Footer */
+        footer {
+            border-top: 1px solid var(--border);
+            padding: 2rem;
+            text-align: center;
+            color: var(--text-dim);
+            font-size: 0.85rem;
+            margin-top: 3rem;
+        }
+
+        .footer-highlight {
+            color: var(--accent-secondary);
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <a href="#" class="nav-brand">
+            <span>ESTG • P.PORTO</span>
+            <span class="brand-badge">ASI 2025/2026</span>
+        </a>
+        <div class="nav-meta">
+            <div class="score-pill">
+                <span>🏆 Meta: 20/20 Valores</span>
+            </div>
+            <button class="btn-theme" id="themeToggleBtn" onclick="toggleTheme()">
+                <span id="themeIcon">☀️</span> Modo Claro
+            </button>
+        </div>
+    </nav>
+
+    <!-- Main Container -->
+    <div class="container">
+
+        <!-- Hero Header -->
+        <header class="hero">
+            <h1 class="hero-title">Preparação Definitiva para o Exame de ASI</h1>
+            <p class="hero-desc">
+                Guia completo e simulador para alcançar a nota máxima de <strong>20 Valores</strong> na unidade curricular de <strong>Administração de Sistemas Informáticos</strong> (LSIRC & LEI). Cobertura exaustiva dos exames anteriores, matriz dos 4 pilares, regex com validação ao vivo, estruturas de dicionários multinível e código modular 100% testado.
+            </p>
+            <div class="hero-stats">
+                <div class="stat-card">
+                    <div class="stat-num">4 Pilares</div>
+                    <div class="stat-label">Conteúdo do Exame</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-num">90 Minutos</div>
+                    <div class="stat-label">Duração da Prova</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-num">20.0 Val</div>
+                    <div class="stat-label">Cotação Máxima</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-num">100% Modular</div>
+                    <div class="stat-label">Requisito Obrigatório</div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Navigation Tabs -->
+        <div class="tabs-nav">
+            <button class="tab-btn active" onclick="switchTab('tab-visao-geral')">🎯 Visão Geral & Matriz</button>
+            <button class="tab-btn" onclick="switchTab('tab-pilar1')">⚡ Pilar 1: Regex & Sanitização <span class="badge">6.0v</span></button>
+            <button class="tab-btn" onclick="switchTab('tab-pilar2')">📂 Pilar 2: Ficheiros & Dicionários <span class="badge">4.0v</span></button>
+            <button class="tab-btn" onclick="switchTab('tab-pilar3')">🧩 Pilar 3: Modularidade <span class="badge">4.0v</span></button>
+            <button class="tab-btn" onclick="switchTab('tab-pilar4')">📊 Pilar 4: Agregações & Cálculos <span class="badge">6.0v</span></button>
+            <button class="tab-btn" onclick="switchTab('tab-exames')">📝 Exames Resolvidos <span class="badge">2024-2026</span></button>
+            <button class="tab-btn" onclick="switchTab('tab-quiz')">🧪 Simulador Quiz 20v</button>
+            <button class="tab-btn" onclick="switchTab('tab-checklist')">🚨 Checklist & Armadilhas</button>
+        </div>
+
+        <!-- ================= TAB 1: VISÃO GERAL ================= -->
+        <div id="tab-visao-geral" class="tab-pane active">
+            <div class="section-card">
+                <div class="section-header">
+                    <div class="section-title-wrap">
+                        <div class="pillar-icon">🎯</div>
+                        <h2 class="section-title">A Estrutura do Exame de ASI (Fórmula dos 20 Valores)</h2>
+                    </div>
+                    <span class="val-badge">Cotação Total: 20,0 Valores</span>
+                </div>
+
+                <p style="margin-bottom: 1.5rem; color: var(--text-muted);">
+                    A análise de todas as provas (Teste B 2025/2026, Teste A 2024/2025 e Exame Modelo) revela que os docentes estruturam a avaliação exatamente nos mesmos <strong>4 blocos fundamentais</strong>. Dominando estes 4 componentes, garantes os 20 valores:
+                </p>
+
+                <table class="custom-table">
+                    <thead>
+                        <tr>
+                            <th>Componente</th>
+                            <th>Teste B (2025/2026)</th>
+                            <th>Teste A (2024/2025)</th>
+                            <th>Exame Modelo</th>
+                            <th>Cotação</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Pilar 1: Regex & Sanitização</strong></td>
+                            <td>Ofuscar IPs, converter formato datas e anonimizar utilizadores em novo ficheiro</td>
+                            <td>Ler ficheiro e ofuscar IDs de estudantes com <code>hashlib.sha256</code></td>
+                            <td>Validar CIDR, Datas e Telefones de Portugal com Regex</td>
+                            <td><span class="val-badge">5,0 a 6,0 v</span></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Pilar 2: Leitura p/ Dicionários</strong></td>
+                            <td><code>ReadLogFile.py</code> lendo acessos para <code>dict[host][data] = [tuplos]</code></td>
+                            <td><code>ReadFile.py</code> lendo backups para <code>dict[data][host][hora] = status</code></td>
+                            <td><code>Leitura.py</code> lendo <code>dados.txt</code> para hashtables cruzadas</td>
+                            <td><span class="val-badge">4,0 v</span></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Pilar 3: Modularidade Obrigatória</strong></td>
+                            <td>Módulos separados: <code>ReadLogFile.py</code>, <code>Check.py</code>, <code>Average.py</code></td>
+                            <td>Módulos separados: <code>ReadFile.py</code>, <code>Check.py</code>, <code>Average.py</code>, <code>Stats.py</code></td>
+                            <td>Módulo <code>Apurar.py</code> importado e consumido</td>
+                            <td><span class="val-badge">2,0 a 4,0 v</span></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Pilar 4: Agregações & Cálculos</strong></td>
+                            <td>Filtrar pedidos &gt; 2048 bytes + Método HTTP mais frequente do mês + Validação Regex</td>
+                            <td>Contar falhas, totais por host e média de durações de backup</td>
+                            <td>Somar total acumulado em coimas por condutor</td>
+                            <td><span class="val-badge">6,0 a 8,0 v</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="alert-box alert-warning">
+                    <div class="alert-icon">⚠️</div>
+                    <div>
+                        <strong>Regra de Ouro da Avaliação:</strong> Os professores indicam expressamente no enunciado: 
+                        <em>"A organização e a modularização do código é considerado na avaliação das respostas."</em>
+                        Se colocares todo o código num único script sem criar os módulos <code>.py</code> pedidos, perdes imediatamente até 5 valores!
+                    </div>
+                </div>
+
+                <h3 style="font-family: 'Outfit'; margin: 1.5rem 0 1rem;">Cronograma Ideal para os 90 Minutos</h3>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem;">
+                    <div class="stat-card">
+                        <div style="color: var(--accent-secondary); font-weight: 700; margin-bottom: 4px;">00 - 25 min</div>
+                        <div style="font-weight: 600; font-size: 0.95rem;">Pergunta 1 (Sanitização)</div>
+                        <div style="font-size: 0.8rem; color: var(--text-dim);">Regex, hashlib, substituições e escrita no ficheiro `_anon.txt`.</div>
+                    </div>
+                    <div class="stat-card">
+                        <div style="color: var(--accent-primary); font-weight: 700; margin-bottom: 4px;">25 - 45 min</div>
+                        <div style="font-weight: 600; font-size: 0.95rem;">Pergunta 2 a) & d) (Leitura & Regex)</div>
+                        <div style="font-size: 0.8rem; color: var(--text-dim);">Módulo `ReadFile.py` e expressões regulares de validação.</div>
+                    </div>
+                    <div class="stat-card">
+                        <div style="color: var(--accent-tertiary); font-weight: 700; margin-bottom: 4px;">45 - 75 min</div>
+                        <div style="font-weight: 600; font-size: 0.95rem;">Pergunta 2 b) & c) (Lógica e Médias)</div>
+                        <div style="font-size: 0.8rem; color: var(--text-dim);">Módulos `Check.py`, `Average.py` e `Stats.py`.</div>
+                    </div>
+                    <div class="stat-card">
+                        <div style="color: #fbbf24; font-weight: 700; margin-bottom: 4px;">75 - 90 min</div>
+                        <div style="font-weight: 600; font-size: 0.95rem;">Revisão & Submissão Moodle</div>
+                        <div style="font-size: 0.8rem; color: var(--text-dim);">Testar imports no terminal e confirmar entrega dos ficheiros.</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ================= TAB 2: PILAR 1 REGEX & SANITIZAÇÃO ================= -->
+        <div id="tab-pilar1" class="tab-pane">
+            <div class="section-card">
+                <div class="section-header">
+                    <div class="section-title-wrap">
+                        <div class="pillar-icon">⚡</div>
+                        <h2 class="section-title">Pilar 1: Expressões Regulares (re), Hashlib & Sanitização</h2>
+                    </div>
+                    <span class="val-badge">6,0 Valores</span>
+                </div>
+
+                <p style="color: var(--text-muted); margin-bottom: 1.5rem;">
+                    O exame de ASI exige o domínio de expressões regulares avançadas para três tarefas principais:
+                    <strong>1) Validação rigorosa de campos</strong>, <strong>2) Substituição/Ofuscação com grupos (Backtrack)</strong>, e <strong>3) Hash SHA-256</strong>.
+                </p>
+
+                <!-- Interactive Regex Tester -->
+                <div class="regex-tool">
+                    <h3 style="font-family: 'Outfit'; font-size: 1.2rem; margin-bottom: 0.5rem; display: flex; align-items: center; gap: 8px;">
+                        🧪 Testador Interativo de Padrões do Exame
+                    </h3>
+                    <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 1rem;">
+                        Escolhe um padrão de exame ou escreve o teu regex para validar strings em tempo real com feedback instantâneo:
+                    </p>
+
+                    <div class="regex-presets">
+                        <button class="preset-btn" onclick="loadRegexPreset('ip')">IPv4 (Octetos 10-255)</button>
+                        <button class="preset-btn" onclick="loadRegexPreset('cidr')">IPv4 em CIDR (/16, /24)</button>
+                        <button class="preset-btn" onclick="loadRegexPreset('data2025')">Data Ano 2025 (AAAA-MM-DD)</button>
+                        <button class="preset-btn" onclick="loadRegexPreset('hora')">Hora (00:00:00 - 23:59:59)</button>
+                        <button class="preset-btn" onclick="loadRegexPreset('metodo')">Método HTTP (GET|POST...)</button>
+                        <button class="preset-btn" onclick="loadRegexPreset('status')">HTTP Status (2xx, 3xx, 4xx)</button>
+                        <button class="preset-btn" onclick="loadRegexPreset('estudante')">Nº Aluno (8NNNNNN)</button>
+                        <button class="preset-btn" onclick="loadRegexPreset('telefone')">Telefone PT (+351 9...)</button>
+                    </div>
+
+                    <div class="tool-grid">
+                        <div class="input-group">
+                            <label for="regexInput">Expressão Regular (Pattern):</label>
+                            <input type="text" id="regexInput" class="custom-input" value="^(?:(?:[1-9]\d|1\d{2}|2[0-4]\d|25[0-5])\.){3}(?:[1-9]\d|1\d{2}|2[0-4]\d|25[0-5])$" oninput="runRegexTest()">
+                        </div>
+                        <div class="input-group">
+                            <label for="regexTestString">String de Teste:</label>
+                            <input type="text" id="regexTestString" class="custom-input" value="192.168.10.45" oninput="runRegexTest()">
+                        </div>
+                    </div>
+
+                    <div class="test-result-box">
+                        <span id="regexOutputText">Resultado da Validação:</span>
+                        <span id="regexStatusBadge" class="status-badge valid">VÁLIDO (MATCH)</span>
+                    </div>
+                </div>
+
+                <!-- Tabela de Regex Essencial -->
+                <h3 style="font-family: 'Outfit'; margin: 2rem 0 1rem;">Tabela dos Padrões de Exame Prontos a Usar</h3>
+                <table class="custom-table">
+                    <thead>
+                        <tr>
+                            <th>Regra do Exame</th>
+                            <th>Expressão Regular (Python)</th>
+                            <th>Exemplo Válido</th>
+                            <th>Exemplo Inválido</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Host IPv4 (10 a 255 por octeto)</strong></td>
+                            <td><code>^(?:(?:[1-9]\d|1\d{2}|2[0-4]\d|25[0-5])\.){3}(?:[1-9]\d|1\d{2}|2[0-4]\d|25[0-5])$</code></td>
+                            <td><code>192.168.10.45</code></td>
+                            <td><code>8.8.8.8</code> (8 &lt; 10)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Data em 2025 (AAAA-MM-DD)</strong></td>
+                            <td><code>^2025-(?:0[1-9]|1[0-2])-(?:0[1-9]|[12]\d|3[01])$</code></td>
+                            <td><code>2025-08-15</code></td>
+                            <td><code>2024-02-28</code> (ano errado)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Hora (HH:MM:SS) 00:00:00 a 23:59:59</strong></td>
+                            <td><code>^(?:[01]\d|2[0-3]):[0-5]\d:[0-5]\d$</code></td>
+                            <td><code>13:45:02</code></td>
+                            <td><code>24:00:59</code> (hora 24 não existe)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Métodos HTTP Permitidos</strong></td>
+                            <td><code>^(?:GET|POST|PUT|DELETE|PATCH)$</code></td>
+                            <td><code>POST</code></td>
+                            <td><code>CONNECT</code>, <code>head</code></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Recurso Web</strong></td>
+                            <td><code>^/[a-zA-Z0-9\-_/?=&]+$</code></td>
+                            <td><code>/api/users?id=32</code></td>
+                            <td><code>api/users</code> (sem barra inicial)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>HTTP Status (2xx, 3xx, 4xx)</strong></td>
+                            <td><code>^[234]\d{2}$</code></td>
+                            <td><code>200</code>, <code>302</code>, <code>404</code></td>
+                            <td><code>500</code> (erro 5xx proibido)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Bytes (&lt; 10.000.000 positivos)</strong></td>
+                            <td><code>^[1-9]\d{0,6}$</code></td>
+                            <td><code>8421</code></td>
+                            <td><code>12500000</code> (&ge; 10M)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Nº Estudante (8 seguido de 6 digitos)</strong></td>
+                            <td><code>\b8\d{6}\b</code></td>
+                            <td><code>8210123</code></td>
+                            <td><code>9210123</code>, <code>821012</code></td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <!-- Snippet Python de Sanitização com Backtrack e Hashlib -->
+                <h3 style="font-family: 'Outfit'; margin: 2rem 0 0.5rem;">Solução da Pergunta 1: Anonimização de Logs & Hash SHA256</h3>
+                <div class="code-container">
+                    <div class="code-header">
+                        <span class="code-lang">Python • anonimizador.py (Teste B)</span>
+                        <button class="btn-copy" onclick="copyCode('code-anon')">Copiar Código</button>
+                    </div>
+                    <pre><code id="code-anon">import re
+import os
+
+def anonimizar_ficheiro(caminho_entrada):
+    """
+    Pergunta 1 do Teste B (6,0 valores):
+    - Ofusca IPs mantendo os dois últimos octetos (192.168.0.15 -> ***.***.0.15)
+    - Converte datas de YYYY-MM-DD para DD/MM/YYYY (2025-10-24 -> 24/10/2025)
+    - Anonimiza utilizadores incrementalmente (user_jose -> utilizador_1)
+    - Remove linhas vazias e espaços duplicados
+    - Guarda no ficheiro com terminação _anon.txt
+    """
+    base, ext = os.path.splitext(caminho_entrada)
+    caminho_saida = f"{base}_anon{ext}"
+
+    # Regex para capturar os 2 últimos grupos do IP
+    regex_ip = re.compile(r'\b\d{1,3}\.\d{1,3}\.(\d{1,3}\.\d{1,3})\b')
+    # Regex para datas YYYY-MM-DD
+    regex_data = re.compile(r'\b(\d{4})-(\d{2})-(\d{2})\b')
+    # Regex para capturar nomes de utilizador
+    regex_user = re.compile(r'\b(?:user|admin)_[a-zA-Z0-9_]+\b')
+
+    mapa_utilizadores = {}
+    contador_user = 1
+    linhas_saida = []
+
+    with open(caminho_entrada, 'r', encoding='utf-8') as f:
+        for linha in f:
+            linha = linha.strip()
+            if not linha:  # Eliminar linhas em branco
+                continue
+            
+            # Eliminar espaços duplicados
+            linha = re.sub(r' +', ' ', linha)
+
+            # 1. Ofuscar IPs substituindo os 2 primeiros grupos por ***
+            linha = regex_ip.sub(r'***.***.\1', linha)
+
+            # 2. Inverter formato de data YYYY-MM-DD -> DD/MM/YYYY
+            linha = regex_data.sub(r'\3/\2/\1', linha)
+
+            # 3. Anonimizar utilizadores de forma consistente
+            def substitui_user(match):
+                nonlocal contador_user
+                nome = match.group(0)
+                if nome not in mapa_utilizadores:
+                    mapa_utilizadores[nome] = f"utilizador_{contador_user}"
+                    contador_user += 1
+                return mapa_utilizadores[nome]
+
+            linha = regex_user.sub(substitui_user, linha)
+            linhas_saida.append(linha)
+
+    # Gravar o ficheiro de saída
+    with open(caminho_saida, 'w', encoding='utf-8') as f:
+        for l in linhas_saida:
+            f.write(l + '\n')
+
+    return caminho_saida
+</code></pre>
+                </div>
+
+                <!-- Teste A: Hashlib SHA256 -->
+                <div class="code-container">
+                    <div class="code-header">
+                        <span class="code-lang">Python • ofuscador_sha256.py (Teste A - 5.0v)</span>
+                        <button class="btn-copy" onclick="copyCode('code-sha')">Copiar Código</button>
+                    </div>
+                    <pre><code id="code-sha">import re
+import hashlib
+
+def ofuscar_alunos_sha256(ficheiro_entrada, ficheiro_saida):
+    """
+    Pergunta 1 do Teste A (5,0 valores):
+    Ofusca ocorrências do número de estudante 8NNNNNN pelo correspondente hash SHA-256.
+    """
+    re_estudante = re.compile(r'\b8\d{6}\b')
+
+    def calcular_sha256(match):
+        num_aluno = match.group(0)
+        # hashlib.sha256 necessita de bytes (encode) e retorna hex
+        return hashlib.sha256(num_aluno.encode('utf-8')).hexdigest()
+
+    with open(ficheiro_entrada, 'r', encoding='utf-8') as f_in, \
+         open(ficheiro_saida, 'w', encoding='utf-8') as f_out:
+        for linha in f_in:
+            # Substituição dinâmica com função callback
+            linha_ofuscada = re_estudante.sub(calcular_sha256, linha)
+            f_out.write(linha_ofuscada)
+</code></pre>
+                </div>
+            </div>
+        </div>
+
+        <!-- ================= TAB 3: PILAR 2 FICHEIROS & DICIONÁRIOS ================= -->
+        <div id="tab-pilar2" class="tab-pane">
+            <div class="section-card">
+                <div class="section-header">
+                    <div class="section-title-wrap">
+                        <div class="pillar-icon">📂</div>
+                        <h2 class="section-title">Pilar 2: Leitura de Ficheiros & Dicionários Multinível</h2>
+                    </div>
+                    <span class="val-badge">4,0 Valores</span>
+                </div>
+
+                <p style="color: var(--text-muted); margin-bottom: 1.5rem;">
+                    Em todos os exames de ASI, a <strong>Pergunta 2 a)</strong> pede a leitura de um ficheiro de texto delimitado por <code>;</code> para construir uma <strong>Hashtable multinível</strong> (Dicionários aninhados). O segredo para não ter <code>KeyError</code> e tirar os 4,0 valores completos é saber estruturar a inserção em profundidade.
+                </p>
+
+                <h3 style="font-family: 'Outfit'; margin-bottom: 0.75rem;">Visualização da Estrutura Exigida no Teste B</h3>
+                <div class="dict-visual">
+<span class="tree-comment"># Hashtable Log exigida no Teste B: dict[Host] -> dict[Data] -> list[tuplos]</span>
+Log = {
+    <span class="tree-key">'192.168.10.45'</span>: {
+        <span class="tree-key">'2025-03-10'</span>: [
+            (<span class="tree-val">'GET'</span>, <span class="tree-val">'/home'</span>, <span class="tree-val">200</span>, <span class="tree-val">5120</span>)
+        ]
+    },
+    <span class="tree-key">'192.168.10.50'</span>: {
+        <span class="tree-key">'2025-03-01'</span>: [
+            (<span class="tree-val">'PATCH'</span>, <span class="tree-val">'/api/update?id=5'</span>, <span class="tree-val">302</span>, <span class="tree-val">4096</span>)
+        ]
+    }
+}
+                </div>
+
+                <h3 style="font-family: 'Outfit'; margin-top: 1.5rem; margin-bottom: 0.75rem;">Visualização da Estrutura Exigida no Teste A</h3>
+                <div class="dict-visual">
+<span class="tree-comment"># Hashtable Backups exigida no Teste A: dict[Data] -> dict[Host] -> dict[Hora] = Status</span>
+backups = {
+    <span class="tree-key">'2024-02-20'</span>: {
+        <span class="tree-key">'EX1'</span>: {
+            <span class="tree-key">'12:45:12'</span>: <span class="tree-val">'Failed'</span>,
+            <span class="tree-key">'15:00:53'</span>: <span class="tree-val">'Success'</span>
+        },
+        <span class="tree-key">'EX2'</span>: {
+            <span class="tree-key">'13:05:23'</span>: <span class="tree-val">'Success'</span>
+        }
+    }
+}
+                </div>
+
+                <div class="alert-box alert-success">
+                    <div class="alert-icon">💡</div>
+                    <div>
+                        <strong>Padrão Infalível para Dicionários Multinível:</strong><br>
+                        Sempre que fores aceder a um nível interior, verifica se a chave do nível pai já existe:
+                        <pre style="padding: 6px; background: rgba(0,0,0,0.2); border-radius: 4px; margin-top: 6px;"><code style="color: #a7f3d0;">if host not in Log:
+    Log[host] = {}
+if data not in Log[host]:
+    Log[host][data] = []
+Log[host][data].append((metodo, recurso, status, bytes))</code></pre>
+                    </div>
+                </div>
+
+                <h3 style="font-family: 'Outfit'; margin: 2rem 0 0.5rem;">Implementação Completa de <code>ReadLogFile.py</code> (4,0 v)</h3>
+                <div class="code-container">
+                    <div class="code-header">
+                        <span class="code-lang">Python • ReadLogFile.py (Teste B)</span>
+                        <button class="btn-copy" onclick="copyCode('code-readlog')">Copiar Código</button>
+                    </div>
+                    <pre><code id="code-readlog">import re
+
+# Regex das regras da alínea d)
+re_host = re.compile(r'^(?:(?:[1-9]\d|1\d{2}|2[0-4]\d|25[0-5])\.){3}(?:[1-9]\d|1\d{2}|2[0-4]\d|25[0-5])$')
+re_data = re.compile(r'^2025-(?:0[1-9]|1[0-2])-(?:0[1-9]|[12]\d|3[01])$')
+re_hora = re.compile(r'^(?:[01]\d|2[0-3]):[0-5]\d:[0-5]\d$')
+re_metodo = re.compile(r'^(?:GET|POST|PUT|DELETE|PATCH)$')
+re_recurso = re.compile(r'^/[a-zA-Z0-9\-_/?=&]+$')
+re_status = re.compile(r'^[234]\d{2}$')
+re_bytes = re.compile(r'^[1-9]\d{0,6}$')
+
+def validar_linha(host, data, hora, metodo, recurso, status, nbytes):
+    """Verifica se todos os campos cumprem as restrições da pergunta 2d."""
+    return (bool(re_host.match(host)) and
+            bool(re_data.match(data)) and
+            bool(re_hora.match(hora)) and
+            bool(re_metodo.match(metodo)) and
+            bool(re_recurso.match(recurso)) and
+            bool(re_status.match(status)) and
+            bool(re_bytes.match(nbytes)))
+
+def Read(caminho_ficheiro="acessos_servidor.txt"):
+    """
+    Pergunta 2 a) (4,0 valores):
+    Lê o ficheiro para uma hashtable onde a chave é o Host, o valor é um
+    dicionário indexado pela Data, cujo valor é uma lista de tuplos:
+    (Método, Recurso, HTTP_Status, Bytes).
+    Filtra apenas as linhas válidas e ignora comentários (#).
+    """
+    Log = {}
+    with open(caminho_ficheiro, 'r', encoding='utf-8') as f:
+        for linha in f:
+            linha = linha.strip()
+            # Ignorar linhas vazias e cabeçalhos iniciados por '#'
+            if not linha or linha.startswith('#'):
+                continue
+                
+            campos = linha.split(';')
+            if len(campos) != 7:
+                continue
+                
+            host, data, hora, metodo, recurso, status, nbytes = campos
+            
+            # Garantir apenas linhas bem formadas (Pergunta 2d)
+            if not validar_linha(host, data, hora, metodo, recurso, status, nbytes):
+                continue
+                
+            # Converter tipos numéricos
+            status_int = int(status)
+            bytes_int = int(nbytes)
+            
+            # Construir estrutura multinível
+            if host not in Log:
+                Log[host] = {}
+            if data not in Log[host]:
+                Log[host][data] = []
+                
+            Log[host][data].append((metodo, recurso, status_int, bytes_int))
+            
+    return Log
+</code></pre>
+                </div>
+            </div>
+        </div>
+
+        <!-- ================= TAB 4: PILAR 3 MODULARIDADE ================= -->
+        <div id="tab-pilar3" class="tab-pane">
+            <div class="section-card">
+                <div class="section-header">
+                    <div class="section-title-wrap">
+                        <div class="pillar-icon">🧩</div>
+                        <h2 class="section-title">Pilar 3: Modularidade, Arquitetura e Imports</h2>
+                    </div>
+                    <span class="val-badge">4,0 Valores</span>
+                </div>
+
+                <p style="color: var(--text-muted); margin-bottom: 1.5rem;">
+                    Em todos os enunciados de ASI, as funções são explicitamente atribuídas a <strong>módulos específicos</strong> com nomes pré-determinados:
+                    <code>ReadLogFile.py</code>, <code>Check.py</code>, <code>Average.py</code>, <code>Stats.py</code>.
+                </p>
+
+                <h3 style="font-family: 'Outfit'; margin-bottom: 1rem;">Mapa da Arquitetura de Módulos (Teste B)</h3>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1rem; margin-bottom: 1.5rem;">
+                    <div class="stat-card" style="border-left: 4px solid var(--accent-primary);">
+                        <div style="font-weight: 700; color: var(--accent-primary);">ReadLogFile.py</div>
+                        <div style="font-size: 0.85rem; color: var(--text-muted); margin-top: 4px;">Função: <code>Read(ficheiro)</code></div>
+                        <div style="font-size: 0.8rem; color: var(--text-dim); margin-top: 4px;">Lê o ficheiro e devolve o dicionário multinível <code>Log</code>.</div>
+                    </div>
+                    <div class="stat-card" style="border-left: 4px solid var(--accent-secondary);">
+                        <div style="font-weight: 700; color: var(--accent-secondary);">Check.py</div>
+                        <div style="font-size: 0.85rem; color: var(--text-muted); margin-top: 4px;">Função: <code>CheckLogs(Log)</code></div>
+                        <div style="font-size: 0.8rem; color: var(--text-dim); margin-top: 4px;">Filtra os pedidos com tráfego superior a 2048 bytes.</div>
+                    </div>
+                    <div class="stat-card" style="border-left: 4px solid var(--accent-tertiary);">
+                        <div style="font-weight: 700; color: var(--accent-tertiary);">Average.py</div>
+                        <div style="font-size: 0.85rem; color: var(--text-muted); margin-top: 4px;">Função: <code>AvarageMethod(Log, mes)</code></div>
+                        <div style="font-size: 0.8rem; color: var(--text-dim); margin-top: 4px;">Calcula a frequência e apura o método mais comum no mês.</div>
+                    </div>
+                    <div class="stat-card" style="border-left: 4px solid #fbbf24;">
+                        <div style="font-weight: 700; color: #fbbf24;">main.py</div>
+                        <div style="font-size: 0.85rem; color: var(--text-muted); margin-top: 4px;">Orquestrador da Solução</div>
+                        <div style="font-size: 0.8rem; color: var(--text-dim); margin-top: 4px;">Importa todos os módulos e apresenta os resultados finais.</div>
+                    </div>
+                </div>
+
+                <div class="code-container">
+                    <div class="code-header">
+                        <span class="code-lang">Python • main.py (Orquestrador Obrigatório)</span>
+                        <button class="btn-copy" onclick="copyCode('code-main')">Copiar Código</button>
+                    </div>
+                    <pre><code id="code-main"># main.py - Orquestrador com Imports Modulares
+from ReadLogFile import Read
+from Check import CheckLogs
+from Average import AvarageMethod
+
+def main():
+    print("=" * 60)
+    print("SISTEMA DE ANÁLISE DE LOGS DE SERVIDOR (ASI 2025/2026)")
+    print("=" * 60)
+
+    # 1. Leitura e carregamento dos dados válidos
+    caminho = "acessos_servidor.txt"
+    log_data = Read(caminho)
+    print(f"\n[+] Dados carregados com sucesso de '{caminho}':")
+    print(f"    Hosts válidos identificados: {list(log_data.keys())}")
+
+    # 2. Execução da verificação de tráfego elevado (> 2048 bytes)
+    print("\n[+] Pedidos com dados transmitidos > 2048 bytes (Check.py):")
+    pedidos_pesados = CheckLogs(log_data)
+    for p in pedidos_pesados:
+        print(f"    - Host: {p['host']} | Data: {p['data']} | {p['metodo']} {p['recurso']} ({p['bytes']} bytes)")
+
+    # 3. Análise estatística de métodos mais frequentes no mês
+    mes_pesquisa = "2025-03"
+    metodo_comum = AvarageMethod(log_data, mes_pesquisa)
+    print(f"\n[+] Método HTTP mais comum no mês {mes_pesquisa} (Average.py):")
+    print(f"    -> Resultado: {metodo_comum}")
+    print("=" * 60)
+
+if __name__ == '__main__':
+    main()
+</code></pre>
+                </div>
+            </div>
+        </div>
+
+        <!-- ================= TAB 5: PILAR 4 AGREGAÇÕES & CÁLCULOS ================= -->
+        <div id="tab-pilar4" class="tab-pane">
+            <div class="section-card">
+                <div class="section-header">
+                    <div class="section-title-wrap">
+                        <div class="pillar-icon">📊</div>
+                        <h2 class="section-title">Pilar 4: Agregações, Médias, Filtros & Frequências</h2>
+                    </div>
+                    <span class="val-badge">6,0 Valores</span>
+                </div>
+
+                <p style="color: var(--text-muted); margin-bottom: 1.5rem;">
+                    Neste componente são avaliadas operações sobre as hashtables aninhadas:
+                    <strong>1) Filtrar pedidos por limite (&gt; 2048 bytes)</strong>, 
+                    <strong>2) Calcular o elemento mais frequente sem bibliotecas externas</strong>, e 
+                    <strong>3) Contagem e médias seguras</strong>.
+                </p>
+
+                <!-- Check.py -->
+                <h3 style="font-family: 'Outfit'; margin-bottom: 0.5rem;">Módulo Check.py (Filtro &gt; 2048 Bytes)</h3>
+                <div class="code-container">
+                    <div class="code-header">
+                        <span class="code-lang">Python • Check.py (Teste B - 2.0v)</span>
+                        <button class="btn-copy" onclick="copyCode('code-check')">Copiar Código</button>
+                    </div>
+                    <pre><code id="code-check">def CheckLogs(Log):
+    """
+    Pergunta 2 b) do Teste B (2,0 valores):
+    Retorna uma lista com os pedidos em que o valor dos dados transmitidos
+    ultrapassou os 2048 bytes, utilizando as estruturas já criadas.
+    """
+    pedidos_acima_limite = []
+
+    # Iterar sobre a hashtable multinível: Log[host][data] -> lista de tuplos
+    for host, datas in Log.items():
+        for data, lista_pedidos in datas.items():
+            for metodo, recurso, status, nbytes in lista_pedidos:
+                if nbytes > 2048:
+                    pedidos_acima_limite.append({
+                        'host': host,
+                        'data': data,
+                        'metodo': metodo,
+                        'recurso': recurso,
+                        'status': status,
+                        'bytes': nbytes
+                    })
+
+    return pedidos_acima_limite
+</code></pre>
+                </div>
+
+                <!-- Average.py -->
+                <h3 style="font-family: 'Outfit'; margin-top: 1.5rem; margin-bottom: 0.5rem;">Módulo Average.py (Método Mais Frequente no Mês)</h3>
+                <div class="code-container">
+                    <div class="code-header">
+                        <span class="code-lang">Python • Average.py (Teste B - 2.0v)</span>
+                        <button class="btn-copy" onclick="copyCode('code-avg')">Copiar Código</button>
+                    </div>
+                    <pre><code id="code-avg">def AvarageMethod(Log, mes):
+    """
+    Pergunta 2 c) do Teste B (2,0 valores):
+    Retorna o método (e.g. POST, GET, PUT, etc.) mais comum num determinado
+    mês, utilizando as estruturas de dados já criadas.
+    Exemplo de mes recebido: '2025-03' ou '03'.
+    """
+    contagem_metodos = {}
+
+    # Percorrer toda a estrutura
+    for host, datas in Log.items():
+        for data, lista_pedidos in datas.items():
+            # Verifica se o registo é do mês especificado
+            # Suporta formato '2025-03' ou apenas '03'
+            if data.startswith(mes) or f"-{mes.zfill(2)}-" in data:
+                for metodo, recurso, status, nbytes in lista_pedidos:
+                    # Incremento no dicionário de frequências
+                    contagem_metodos[metodo] = contagem_metodos.get(metodo, 0) + 1
+
+    # Se não houver nenhum pedido no mês, retorna None
+    if not contagem_metodos:
+        return None
+
+    # Encontra o método com o maior valor na contagem
+    metodo_mais_comum = max(contagem_metodos, key=contagem_metodos.get)
+    return metodo_mais_comum
+</code></pre>
+                </div>
+
+                <!-- Stats.py (Teste A) -->
+                <h3 style="font-family: 'Outfit'; margin-top: 1.5rem; margin-bottom: 0.5rem;">Módulo Stats.py (Totais & Falhas por Host - Teste A)</h3>
+                <div class="code-container">
+                    <div class="code-header">
+                        <span class="code-lang">Python • Stats.py (Teste A - 3.0v)</span>
+                        <button class="btn-copy" onclick="copyCode('code-stats')">Copiar Código</button>
+                    </div>
+                    <pre><code id="code-stats">def TotalBackups(backups, host_alvo):
+    """Retorna o número total de registos de backup efetuados para o host."""
+    total = 0
+    for data, hosts in backups.items():
+        if host_alvo in hosts:
+            total += len(hosts[host_alvo])
+    return total
+
+def TotalFailed(backups, host_alvo):
+    """Retorna o número de backups que falharam (status != 'Success') para o host."""
+    falhados = 0
+    for data, hosts in backups.items():
+        if host_alvo in hosts:
+            for hora, status in hosts[host_alvo].items():
+                if status != 'Success':
+                    falhados += 1
+    return falhados
+</code></pre>
+                </div>
+            </div>
+        </div>
+
+        <!-- ================= TAB 6: EXAMES ANTERIORES RESOLVIDOS ================= -->
+        <div id="tab-exames" class="tab-pane">
+            <div class="section-card">
+                <div class="section-header">
+                    <div class="section-title-wrap">
+                        <div class="pillar-icon">📝</div>
+                        <h2 class="section-title">Resoluções Completas dos Exames Anteriores</h2>
+                    </div>
+                    <span class="val-badge">Exames de 2024, 2025 e 2026</span>
+                </div>
+
+                <!-- Accordion Teste B (2025/2026) -->
+                <div class="exam-accordion">
+                    <div class="accordion-header" onclick="toggleAccordion('acc-testeb')">
+                        <div class="accordion-title">
+                            <span>🔥 Teste B (Ano Letivo 2025/2026) - Resolução Completa para 20 Valores</span>
+                        </div>
+                        <span style="font-weight: 700; color: var(--accent-secondary);">Expandir ▼</span>
+                    </div>
+                    <div id="acc-testeb" class="accordion-content open">
+                        <p style="margin-bottom: 1rem; color: var(--text-muted);">
+                            Este teste é o mais recente realizado no curso. Contém os ficheiros de entrada e todos os módulos resolvidos:
+                        </p>
+
+                        <h4 style="margin: 1rem 0 0.5rem; color: var(--accent-secondary);">Ficheiro de Dados: <code>acessos_servidor.txt</code></h4>
+                        <div class="code-container">
+                            <pre><code>#Host;Data;Hora;Método;Recurso;HTTP_Status;Bytes
+192.168.10.45;2025-03-10;14:30:12;GET;/home;200;5120
+8.8.8.8;2025-01-22;09:15:00;POST;/login;404;1536
+192.168.1.77;2025-01-15;12:00:00;DELETE;/admin;403;1024
+192.168.10.50;2025-03-01;23:59:59;PATCH;/api/update?id=5;302;4096
+192.168.10.60;2025-03-15;11:00:00;PUT;/api/users;200;256
+192.168.10.99;2025-09-09;07:45:33;GET;/home;500;512</code></pre>
+                        </div>
+
+                        <div class="alert-box alert-warning">
+                            <div class="alert-icon">🔍</div>
+                            <div>
+                                <strong>Análise de Linhas Válidas vs Inválidas segundo a Pergunta 2d:</strong><br>
+                                • Linha 1 (192.168.10.45): <strong>VÁLIDA</strong> (todos os campos dentro dos limites).<br>
+                                • Linha 2 (8.8.8.8): <strong>INVÁLIDA</strong> (octeto 8 &lt; 10, o exame exige 10 a 255).<br>
+                                • Linha 3 (192.168.1.77): <strong>INVÁLIDA</strong> (octeto 1 &lt; 10).<br>
+                                • Linha 4 (192.168.10.50): <strong>VÁLIDA</strong> (PATCH permitido, 4096 bytes).<br>
+                                • Linha 5 (192.168.10.60): <strong>VÁLIDA</strong>.<br>
+                                • Linha 6 (192.168.10.99): <strong>INVÁLIDA</strong> (HTTP status 500 não permitido; apenas 2xx, 3xx e 4xx).
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Accordion Teste A (2024/2025) -->
+                <div class="exam-accordion">
+                    <div class="accordion-header" onclick="toggleAccordion('acc-testea')">
+                        <div class="accordion-title">
+                            <span>📘 Teste A (Ano Letivo 2024/2025) - Resolução Completa para 20 Valores</span>
+                        </div>
+                        <span style="font-weight: 700; color: var(--accent-secondary);">Expandir ▼</span>
+                    </div>
+                    <div id="acc-testea" class="accordion-content">
+                        <p style="margin-bottom: 1rem; color: var(--text-muted);">
+                            O Teste A foca-se na monitorização de backups em servidores e ofuscação criptográfica com <code>hashlib.sha256</code>:
+                        </p>
+
+                        <h4 style="margin: 1rem 0 0.5rem; color: var(--accent-secondary);">Módulo: <code>ReadFile.py</code> (4,0 v)</h4>
+                        <div class="code-container">
+                            <pre><code>def Read(caminho="backup.txt"):
+    """
+    Estrutura: dict[Data][Host][Hora] = Status
+    Converte a data de AAAA/MM/DD para AAAA-MM-DD conforme enunciado.
+    """
+    backups = {}
+    with open(caminho, 'r', encoding='utf-8') as f:
+        for linha in f:
+            linha = linha.strip()
+            if not linha or linha.startswith('#'):
+                continue
+            partes = linha.split(';')
+            if len(partes) != 3:
+                continue
+            data_hora, host, status = partes
+            data, hora = data_hora.split(' ')
+            data_formatada = data.replace('/', '-')
+            
+            if data_formatada not in backups:
+                backups[data_formatada] = {}
+            if host not in backups[data_formatada]:
+                backups[data_formatada][host] = {}
+                
+            backups[data_formatada][host][hora] = status
+    return backups
+</code></pre>
+                        </div>
+
+                        <h4 style="margin: 1rem 0 0.5rem; color: var(--accent-secondary);">Módulo: <code>Check.py</code> (4,0 v)</h4>
+                        <div class="code-container">
+                            <pre><code>def bckSuccess(backups):
+    """Retorna hashtable com chave=host e valor=lista com data e hora das falhas (status != 'Success')."""
+    falhas_por_host = {}
+    for data, hosts in backups.items():
+        for host, horas in hosts.items():
+            for hora, status in horas.items():
+                if status != 'Success':
+                    if host not in falhas_por_host:
+                        falhas_por_host[host] = []
+                    falhas_por_host[host].append(f"{data} {hora}")
+    return falhas_por_host
+</code></pre>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Accordion Exame Modelo -->
+                <div class="exam-accordion">
+                    <div class="accordion-header" onclick="toggleAccordion('acc-examemodelo')">
+                        <div class="accordion-title">
+                            <span>📙 Exame Modelo (Época Especial) - Trânsito, CIDR & Coimas</span>
+                        </div>
+                        <span style="font-weight: 700; color: var(--accent-secondary);">Expandir ▼</span>
+                    </div>
+                    <div id="acc-examemodelo" class="accordion-content">
+                        <p style="margin-bottom: 1rem; color: var(--text-muted);">
+                            Aborda validação CIDR, datas e módulo <code>Apurar.py</code> para calcular coimas acumuladas:
+                        </p>
+                        <div class="code-container">
+                            <pre><code>import re
+
+def validar_cidr(ip_cidr):
+    """Valida formato CIDR com octetos 0-255 e prefixo /1 a /32."""
+    padrao = r'^(?:(?:25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)\.){3}(?:25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)/(?:[1-9]|[12]\d|3[0-2])$'
+    return bool(re.match(padrao, ip_cidr))
+
+# Módulo Apurar.py
+def acumulado(Condutores, Veiculos):
+    """Calcula o valor acumulado em coimas para cada condutor."""
+    total_coimas = {}
+    for carta, lista_mat in Condutores.items():
+        total_coimas[carta] = 0.0
+        for mat in lista_mat:
+            if mat in Veiculos:
+                for data, dados in Veiculos[mat].items():
+                    # dados: [contra_ordenacao, coima_str, data_pagamento]
+                    valor_str = dados[1].replace('€', '').strip()
+                    total_coimas[carta] += float(valor_str)
+    return total_coimas
+</code></pre>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ================= TAB 7: SIMULADOR & QUIZ 20V ================= -->
+        <div id="tab-quiz" class="tab-pane">
+            <div class="quiz-container">
+                <div class="quiz-header">
+                    <div>
+                        <h2 style="font-family: 'Outfit'; font-size: 1.6rem;">🧪 Simulador de Exame (Auto-Avaliação para 20 Valores)</h2>
+                        <p style="font-size: 0.9rem; color: var(--text-muted);">Responde às 10 questões práticas extraídas diretamente dos exames e obtém a tua classificação de 0 a 20 valores.</p>
+                    </div>
+                    <div class="quiz-score-meter">
+                        <div style="text-align: right;">
+                            <div style="font-size: 0.75rem; color: var(--text-dim); text-transform: uppercase;">A Tua Cotação</div>
+                            <div class="score-display" id="quizCurrentScore">0.0 / 20.0</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="quizQuestionsContainer">
+                    <!-- Questions will be dynamically rendered by JS -->
+                </div>
+
+                <button class="btn-theme" style="width: 100%; padding: 14px; font-size: 1rem; justify-content: center; margin-top: 1.5rem; background: var(--accent-primary); border-color: var(--accent-primary); color: white;" onclick="resetQuiz()">
+                    🔄 Reiniciar Simulador de Exame
+                </button>
+            </div>
+        </div>
+
+        <!-- ================= TAB 8: CHECKLIST & ARMADILHAS ================= -->
+        <div id="tab-checklist" class="tab-pane">
+            <div class="section-card">
+                <div class="section-header">
+                    <div class="section-title-wrap">
+                        <div class="pillar-icon">🚨</div>
+                        <h2 class="section-title">As 7 Armadilhas Mortais no Exame de ASI</h2>
+                    </div>
+                    <span class="val-badge">Checklist dos 20 Valores</span>
+                </div>
+
+                <div style="display: flex; flex-direction: column; gap: 1rem;">
+                    <div class="stat-card" style="border-left: 4px solid var(--accent-danger);">
+                        <strong style="color: var(--accent-danger);">1. Não criar os ficheiros/módulos pedidos no enunciado</strong>
+                        <p style="font-size: 0.88rem; color: var(--text-muted); margin-top: 4px;">
+                            Se o enunciado pede a função <code>Read</code> no módulo <code>ReadLogFile.py</code> e colocas tudo no <code>main.py</code>, perdes imediatamente a cotação de organização de código e modularidade! Cria sempre ficheiros separados com o nome exato.
+                        </p>
+                    </div>
+
+                    <div class="stat-card" style="border-left: 4px solid var(--accent-danger);">
+                        <strong style="color: var(--accent-danger);">2. Esquecer de remover linhas vazias ou comentários (#)</strong>
+                        <p style="font-size: 0.88rem; color: var(--text-muted); margin-top: 4px;">
+                            Os ficheiros de dados têm cabeçalhos iniciados por <code>#</code> (ex: <code>#Host;Data;Hora...</code>). Se tentares fazer <code>split(';')</code> e converter para inteiro sem verificar <code>if linha.startswith('#'): continue</code>, o programa rebenta com <code>ValueError</code>!
+                        </p>
+                    </div>
+
+                    <div class="stat-card" style="border-left: 4px solid var(--accent-warning);">
+                        <strong style="color: #fbbf24;">3. Usar <code>split()</code> sem <code>strip()</code> antes</strong>
+                        <p style="font-size: 0.88rem; color: var(--text-muted); margin-top: 4px;">
+                            Cada linha lida com <code>for linha in f:</code> contém o carater de mudança de linha <code>\n</code> no fim. Se não fizeres <code>linha = linha.strip()</code>, o último campo (ex: Bytes) vai conter <code>"5120\n"</code>, o que invalida regex estritas terminadas em <code>$</code>.
+                        </p>
+                    </div>
+
+                    <div class="stat-card" style="border-left: 4px solid var(--accent-warning);">
+                        <strong style="color: #fbbf24;">4. Erro de tipo nas comparações numéricas</strong>
+                        <p style="font-size: 0.88rem; color: var(--text-muted); margin-top: 4px;">
+                            Todos os dados lidos de um ficheiro de texto são <strong>strings</strong>! Se fizeres <code>if bytes > 2048:</code> sem converter com <code>int(nbytes)</code>, o Python lança <code>TypeError: '>' not supported between instances of 'str' and 'int'</code>.
+                        </p>
+                    </div>
+
+                    <div class="stat-card" style="border-left: 4px solid var(--accent-tertiary);">
+                        <strong style="color: var(--accent-tertiary);">5. Não usar <code>.encode()</code> no <code>hashlib.sha256</code></strong>
+                        <p style="font-size: 0.88rem; color: var(--text-muted); margin-top: 4px;">
+                            No Python 3, <code>hashlib.sha256()</code> só aceita objetos de bytes. Fazer <code>hashlib.sha256("8210123")</code> dá erro. O correto é sempre <code>hashlib.sha256(num.encode('utf-8')).hexdigest()</code>.
+                        </p>
+                    </div>
+
+                    <div class="stat-card" style="border-left: 4px solid var(--accent-tertiary);">
+                        <strong style="color: var(--accent-tertiary);">6. Divisões por zero em funções de Média</strong>
+                        <p style="font-size: 0.88rem; color: var(--text-muted); margin-top: 4px;">
+                            Ao calcular médias (ex: <code>sum(lista) / len(lista)</code>), prevê sempre o caso em que a lista está vazia: <code>return sum(lista) / len(lista) if lista else 0.0</code>.
+                        </p>
+                    </div>
+
+                    <div class="stat-card" style="border-left: 4px solid var(--accent-primary);">
+                        <strong style="color: var(--accent-primary);">7. Falhar o nome do ficheiro de saída na Pergunta 1</strong>
+                        <p style="font-size: 0.88rem; color: var(--text-muted); margin-top: 4px;">
+                            O enunciado especifica: <em>"Guardar o resultado num novo ficheiro cujo nome seja o nome original seguido de _anon.txt"</em>. Se o ficheiro de entrada for <code>acessos.txt</code>, o resultado tem de ser gravado em <code>acessos_anon.txt</code>.
+                        </p>
+                    </div>
+                </div>
+
+                <h3 style="font-family: 'Outfit'; margin: 2rem 0 1rem;">Checklist dos 10 Minutos Pré-Entrega no Moodle</h3>
+                <ul style="list-style: none; display: flex; flex-direction: column; gap: 8px;">
+                    <li style="display: flex; align-items: center; gap: 10px; font-size: 0.95rem;">
+                        <input type="checkbox" style="width: 18px; height: 18px; accent-color: var(--accent-tertiary);">
+                        <span>Criei todos os ficheiros <code>.py</code> com os nomes exatos pedidos (ex: <code>ReadLogFile.py</code>, <code>Check.py</code>, <code>Average.py</code>).</span>
+                    </li>
+                    <li style="display: flex; align-items: center; gap: 10px; font-size: 0.95rem;">
+                        <input type="checkbox" style="width: 18px; height: 18px; accent-color: var(--accent-tertiary);">
+                        <span>O script <code>main.py</code> executa do início ao fim sem qualquer erro no terminal (<code>python main.py</code>).</span>
+                    </li>
+                    <li style="display: flex; align-items: center; gap: 10px; font-size: 0.95rem;">
+                        <input type="checkbox" style="width: 18px; height: 18px; accent-color: var(--accent-tertiary);">
+                        <span>As funções recebem e retornam exatamente os tipos de dados especificados (listas, dicionários, tuplos).</span>
+                    </li>
+                    <li style="display: flex; align-items: center; gap: 10px; font-size: 0.95rem;">
+                        <input type="checkbox" style="width: 18px; height: 18px; accent-color: var(--accent-tertiary);">
+                        <span>O ficheiro de anonimização gerou o ficheiro <code>_anon.txt</code> com os espaços duplicados e linhas em branco removidas.</span>
+                    </li>
+                    <li style="display: flex; align-items: center; gap: 10px; font-size: 0.95rem;">
+                        <input type="checkbox" style="width: 18px; height: 18px; accent-color: var(--accent-tertiary);">
+                        <span>Verifiquei no Moodle se todos os ficheiros foram submetidos antes do término dos 90 minutos.</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>Preparação para Exame de ASI • Licenciatura em Segurança Informática em Rede de Computadores (LSIRC)</p>
+        <p style="margin-top: 4px;">ESTG - Escola Superior de Tecnologia e Gestão • Politécnico do Porto</p>
+        <p style="margin-top: 8px;" class="footer-highlight">Foco: 20 Valores • Código 100% Testado e Modular</p>
+    </footer>
+
+    <!-- JavaScript Logic -->
+    <script>
+        // Theme Toggle
+        function toggleTheme() {
+            const body = document.documentElement;
+            const currentTheme = body.getAttribute('data-theme');
+            const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+            body.setAttribute('data-theme', newTheme);
+            const btn = document.getElementById('themeToggleBtn');
+            const icon = document.getElementById('themeIcon');
+            if (newTheme === 'light') {
+                btn.innerHTML = '🌙 Modo Escuro';
+            } else {
+                btn.innerHTML = '☀️ Modo Claro';
+            }
+        }
+
+        // Tab Navigation
+        function switchTab(tabId) {
+            document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+            document.querySelectorAll('.tab-pane').forEach(pane => pane.classList.remove('active'));
+
+            event.currentTarget.classList.add('active');
+            const targetPane = document.getElementById(tabId);
+            if (targetPane) {
+                targetPane.classList.add('active');
+            }
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // Accordion Toggle
+        function toggleAccordion(id) {
+            const content = document.getElementById(id);
+            if (content) {
+                content.classList.toggle('open');
+            }
+        }
+
+        // Copy Code to Clipboard
+        function copyCode(elementId) {
+            const codeEl = document.getElementById(elementId);
+            if (!codeEl) return;
+            const text = codeEl.innerText;
+            navigator.clipboard.writeText(text).then(() => {
+                const btn = event.target;
+                const originalText = btn.innerText;
+                btn.innerText = 'Copiado! ✓';
+                btn.style.background = '#10b981';
+                setTimeout(() => {
+                    btn.innerText = originalText;
+                    btn.style.background = '';
+                }, 2000);
+            });
+        }
+
+        // Regex Tester Logic
+        const regexPresets = {
+            ip: {
+                pattern: '^(?:(?:[1-9]\\d|1\\d{2}|2[0-4]\\d|25[0-5])\\.){3}(?:[1-9]\\d|1\\d{2}|2[0-4]\\d|25[0-5])$',
+                test: '192.168.10.45'
+            },
+            cidr: {
+                pattern: '^(?:(?:25[0-5]|2[0-4]\\d|1\\d\\d|[1-9]?\\d)\\.){3}(?:25[0-5]|2[0-4]\\d|1\\d\\d|[1-9]?\\d)/(?:[1-9]|[12]\\d|3[0-2])$',
+                test: '192.168.1.0/24'
+            },
+            data2025: {
+                pattern: '^2025-(?:0[1-9]|1[0-2])-(?:0[1-9]|[12]\\d|3[01])$',
+                test: '2025-08-15'
+            },
+            hora: {
+                pattern: '^(?:[01]\\d|2[0-3]):[0-5]\\d:[0-5]\\d$',
+                test: '14:30:12'
+            },
+            metodo: {
+                pattern: '^(?:GET|POST|PUT|DELETE|PATCH)$',
+                test: 'POST'
+            },
+            status: {
+                pattern: '^[234]\\d{2}$',
+                test: '200'
+            },
+            estudante: {
+                pattern: '^8\\d{6}$',
+                test: '8210123'
+            },
+            telefone: {
+                pattern: '^(?:00351|\\+351)?[ ]?9[1236]\\d{7}$',
+                test: '+351 961234567'
+            }
+        };
+
+        function loadRegexPreset(presetKey) {
+            const preset = regexPresets[presetKey];
+            if (preset) {
+                document.getElementById('regexInput').value = preset.pattern;
+                document.getElementById('regexTestString').value = preset.test;
+                runRegexTest();
+            }
+        }
+
+        function runRegexTest() {
+            const patternStr = document.getElementById('regexInput').value;
+            const testStr = document.getElementById('regexTestString').value;
+            const badge = document.getElementById('regexStatusBadge');
+            const text = document.getElementById('regexOutputText');
+
+            try {
+                const regex = new RegExp(patternStr);
+                const isMatch = regex.test(testStr);
+
+                if (isMatch) {
+                    badge.className = 'status-badge valid';
+                    badge.innerText = 'VÁLIDO (MATCH) ✓';
+                    text.innerText = `A string "${testStr}" cumpre com sucesso o padrão.`;
+                } else {
+                    badge.className = 'status-badge invalid';
+                    badge.innerText = 'INVÁLIDO ✗';
+                    text.innerText = `A string "${testStr}" NÃO cumpre o padrão definido.`;
+                }
+            } catch (e) {
+                badge.className = 'status-badge invalid';
+                badge.innerText = 'ERRO SINTAXE';
+                text.innerText = `Erro na expressão regular: ${e.message}`;
+            }
+        }
+
+        // Quiz Simulator Data & Logic
+        const quizData = [
+            {
+                q: "1. No Teste B, o Host é um endereço IPv4 com octetos entre 10 e 255. Qual o motivo de '8.8.8.8' ser considerado inválido?",
+                options: [
+                    "Porque tem apenas 4 octetos em vez de 6.",
+                    "Porque começa pelo número 8, que é inferior ao limite mínimo permitido de 10.",
+                    "Porque o DNS da Google não é permitido em redes académicas.",
+                    "Porque não termina em ponto."
+                ],
+                correct: 1,
+                points: 2.0,
+                explanation: "O enunciado do Teste B estipula expressamente: 'Quatro grupos de números entre 10 e 255'. Como 8 < 10, o IP é inválido."
+            },
+            {
+                q: "2. Como converter a data '2025-10-24' para '24/10/2025' utilizando expressões regulares e grupos em Python?",
+                options: [
+                    "re.sub(r'(\\d{4})-(\\d{2})-(\\d{2})', r'\\3/\\2/\\1', texto)",
+                    "re.replace('2025-10-24', '24/10/2025')",
+                    "re.match(r'(\\d{4})/(\\d{2})/(\\d{2})')",
+                    "re.split(r'-', texto).reverse()"
+                ],
+                correct: 0,
+                points: 2.0,
+                explanation: "O re.sub com grupos capturados (\\1=ano, \\2=mês, \\3=dia) permite reordenar para \\3/\\2/\\1 (dia/mês/ano) de forma elegante e correta."
+            },
+            {
+                q: "3. No Teste A, como se calcula o hash SHA-256 de um número de estudante em Python 3?",
+                options: [
+                    "hashlib.sha256('8210123')",
+                    "hashlib.sha256('8210123'.encode('utf-8')).hexdigest()",
+                    "hash('8210123', algorithm='sha256')",
+                    "sha256.encode('8210123')"
+                ],
+                correct: 1,
+                points: 2.0,
+                explanation: "No Python 3, hashlib.sha256 exige um argumento do tipo bytes (obtido com .encode()), e para obter a string hexadecimal representativa usa-se .hexdigest()."
+            },
+            {
+                q: "4. Ao ler um ficheiro para uma hashtable de 2 níveis (ex: Log[host][data]), qual é o erro clássico se não verificares se o host já existe?",
+                options: [
+                    "IndexError",
+                    "KeyError",
+                    "ValueError",
+                    "AttributeError"
+                ],
+                correct: 1,
+                points: 2.0,
+                explanation: "Tentar aceder ou anexar a Log[host][data] quando Log[host] ainda não foi inicializado como dicionário resulta imediatamente em KeyError."
+            },
+            {
+                q: "5. Na função AvarageMethod(Log, mes), como encontrar de forma infalível o método HTTP com mais ocorrências no dicionário de contagens?",
+                options: [
+                    "max(contagem, key=contagem.get)",
+                    "contagem.sort()",
+                    "max(contagem.keys())",
+                    "contagem.pop()"
+                ],
+                correct: 0,
+                points: 2.0,
+                explanation: "max(contagem, key=contagem.get) avalia as chaves do dicionário com base nos seus respetivos valores (as frequências), retornando a chave vencedora."
+            },
+            {
+                q: "6. No Teste B, quais os status HTTP permitidos pela expressão regular ^[234]\\d{2}$?",
+                options: [
+                    "Qualquer código entre 100 e 599.",
+                    "Apenas códigos das famílias 2xx (Sucesso), 3xx (Redirecionamento) e 4xx (Erro do Cliente). Códigos 5xx são proibidos.",
+                    "Apenas o código 200.",
+                    "Códigos que tenham exatamente dois dígitos."
+                ],
+                correct: 1,
+                points: 2.0,
+                explanation: "^[234] restringe o primeiro algarismo a 2, 3 ou 4, seguido de 2 dígitos. O status 500 (erro de servidor) é explicitamente proibido no enunciado."
+            },
+            {
+                q: "7. Por que razão é crucial fazer linha = linha.strip() antes de linha.split(';')?",
+                options: [
+                    "Para converter maiúsculas em minúsculas.",
+                    "Para eliminar carateres de mudança de linha ('\\n' ou '\\r') e espaços nas extremidades que causariam falhas na validação regex.",
+                    "Para transformar a string numa lista.",
+                    "Não tem qualquer utilidade."
+                ],
+                correct: 1,
+                points: 2.0,
+                explanation: "Sem .strip(), o último campo de cada linha mantém o carater '\\n', falhando expressões regulares com o limitador de fim de linha ($) e conversões numéricas."
+            },
+            {
+                q: "8. No Teste B Pergunta 1, como garantir que múltiplos espaços seguidos são convertidos num único espaço?",
+                options: [
+                    "linha.replace(' ', '')",
+                    "re.sub(r' +', ' ', linha)",
+                    "linha.strip()",
+                    "re.split(r' ', linha)"
+                ],
+                correct: 1,
+                points: 2.0,
+                explanation: "re.sub(r' +', ' ', linha) procura 1 ou mais espaços consecutivos e substitui-os por exatamente um espaço único."
+            },
+            {
+                q: "9. Se a função CheckLogs deve encontrar pedidos em que Bytes > 2048, que cuidado essencial deves ter com o campo Bytes?",
+                options: [
+                    "Garantir que convertes o valor de string para inteiro com int(nbytes) antes da comparação.",
+                    "Dividir por 1024 para obter Megabytes.",
+                    "Converter para float obrigatoriamente.",
+                    "Não precisa de conversão porque o Python converte automaticamente."
+                ],
+                correct: 0,
+                points: 2.0,
+                explanation: "Em Python 3, comparar string com int causa TypeError. Os dados lidos do ficheiro de texto são strings e têm de ser convertidos com int()."
+            },
+            {
+                q: "10. Se o enunciado pede funções nos ficheiros ReadLogFile.py, Check.py e Average.py, como deves estruturar a submissão no Moodle?",
+                options: [
+                    "Juntar tudo num único ficheiro main.py e entregar só esse.",
+                    "Criar e entregar todos os ficheiros .py separados conforme pedido, garantindo a modularidade exigida pelos docentes.",
+                    "Entregar apenas imagens do código.",
+                    "Criar um ficheiro .txt com as respostas teóricas."
+                ],
+                correct: 1,
+                points: 2.0,
+                explanation: "A modularização é avaliada explicitamente. A separação estrita em módulos independentes é requisito obrigatório para a nota máxima de 20 valores."
+            }
+        ];
+
+        let userScore = 0;
+        let answeredQuestions = new Set();
+
+        function renderQuiz() {
+            const container = document.getElementById('quizQuestionsContainer');
+            if (!container) return;
+            container.innerHTML = '';
+
+            quizData.forEach((qObj, qIdx) => {
+                const card = document.createElement('div');
+                card.className = 'question-card';
+                card.id = `qcard-${qIdx}`;
+
+                const title = document.createElement('div');
+                title.className = 'question-title';
+                title.innerHTML = `<span>${qObj.q}</span> <span class="val-badge">+${qObj.points.toFixed(1)}v</span>`;
+                card.appendChild(title);
+
+                const optsList = document.createElement('div');
+                optsList.className = 'options-list';
+
+                qObj.options.forEach((optText, optIdx) => {
+                    const optItem = document.createElement('div');
+                    optItem.className = 'option-item';
+                    optItem.id = `q${qIdx}-opt${optIdx}`;
+                    optItem.innerText = optText;
+                    optItem.onclick = () => handleAnswer(qIdx, optIdx);
+                    optsList.appendChild(optItem);
+                });
+
+                card.appendChild(optsList);
+
+                const expl = document.createElement('div');
+                expl.className = 'explanation';
+                expl.id = `q${qIdx}-expl`;
+                expl.innerHTML = `<strong>Explicação:</strong> ${qObj.explanation}`;
+                card.appendChild(expl);
+
+                container.appendChild(card);
+            });
+        }
+
+        function handleAnswer(qIdx, selectedOptIdx) {
+            if (answeredQuestions.has(qIdx)) return;
+            answeredQuestions.add(qIdx);
+
+            const qObj = quizData[qIdx];
+            const correctOptIdx = qObj.correct;
+
+            const selectedEl = document.getElementById(`q${qIdx}-opt${selectedOptIdx}`);
+            const correctEl = document.getElementById(`q${qIdx}-opt${correctOptIdx}`);
+            const explEl = document.getElementById(`q${qIdx}-expl`);
+
+            if (selectedOptIdx === correctOptIdx) {
+                selectedEl.classList.add('correct');
+                userScore += qObj.points;
+            } else {
+                selectedEl.classList.add('wrong');
+                correctEl.classList.add('correct');
+            }
+
+            explEl.style.display = 'block';
+            document.getElementById('quizCurrentScore').innerText = `${userScore.toFixed(1)} / 20.0`;
+
+            if (userScore >= 19.5) {
+                document.getElementById('quizCurrentScore').style.color = '#10b981';
+            } else if (userScore >= 14) {
+                document.getElementById('quizCurrentScore').style.color = '#fbbf24';
+            }
+        }
+
+        function resetQuiz() {
+            userScore = 0;
+            answeredQuestions.clear();
+            document.getElementById('quizCurrentScore').innerText = '0.0 / 20.0';
+            document.getElementById('quizCurrentScore').style.color = '#fbbf24';
+            renderQuiz();
+        }
+
+        // Initialize on load
+        window.onload = () => {
+            runRegexTest();
+            renderQuiz();
+        };
+    </script>
+</body>
+</html>
